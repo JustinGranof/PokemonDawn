@@ -6,11 +6,15 @@ Pokémon Dawn is a remake of the popular Pokémon game series. In Pokémon Dawn 
 with numerous NPCs, explore the different maps, purchase in game items, and train Pokémon through battling.
 
 <h2>Instructions to Run Pokémon Dawn</h2>
-<p>Download the executable jar file from <a href="http://www.mediafire.com/file/ro8ea0xs878jseo/PokemonDawn.jar/file">here</a>.</p>
+<p>Due to GitHub size limitations we were unable to place the jar file in the repository so we hosted it on another website where you can download and run PokemonDawn</p>
+<p>Download the executable jar file <a href="http://www.mediafire.com/file/ro8ea0xs878jseo/PokemonDawn.jar/file">here</a>.</p>
 <ol>
+  
+<p>If you feel uncomfortable downloading from the website, you can compile and run the program yourself:</p>
 <li>Clone the repository</li>
 <li>Navigate into the Pokémon Dawn folder</li>
-<li>In the terminal or command line run java -jar PokemonDawn.jar</li>
+<li>Open the folder in a Java IDE such as Eclipse or Intellij IDEA</li>
+<li>Compile and run the main file PokemonDawn.java as a java application</li>
 </ol>
 
 <h2>Basic Gameplay</h2>
