@@ -1,3 +1,10 @@
+/**
+ * Options.java
+ * Justin Granofsky & Bill Wu
+ * 6/13/2018
+ * Options JPanel class.
+ */
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -106,35 +113,53 @@ public class Options extends JPanel implements ActionListener {
         /* End Of Text Speed Options */
 
         /* Auto Save Option */
+        // Create a button for user to select yes to auto save.
         JButton yes = new JButton("Yes");
+        // Format the button, get rid of all default styling.
         yes.setContentAreaFilled(false);
         yes.setBorderPainted(false);
         yes.setFocusPainted(false);
+        // Set the font of the button's text
         yes.setFont(font);
+        // Add an action listener to the button
         yes.addActionListener(this);
+        // Set the location and dimensions of the button.
         yes.setBounds(270, 267, 100, 50);
-        
+
+        // Create a button for user to select no to auto save.
         JButton no = new JButton("No");
+        // Format the button, get rid of all default styling.
         no.setContentAreaFilled(false);
         no.setBorderPainted(false);
         no.setFocusPainted(false);
+        // Set the font of the button's text
         no.setFont(font);
+        // Add an action listener to the button
         no.addActionListener(this);
+        // Set the location and dimensions of the button.
         no.setBounds(400, 267, 100, 50);
 
+        // Determine which option is currently selected.
         switch(autoSave){
+            // If the case is yes...
             case "Yes":
+                // Draw a red border around the button.
                 yes.setBorderPainted(true);
                 yes.setBorder(selected);
+                // Set the current option to be the yes button.
                 this.autoSave = yes;
                 break;
+            // If the case is no...
             case "No":
+                // Add a red border around the button to show that it is selected
                 no.setBorderPainted(true);
                 no.setBorder(selected);
+                // Set the current option of auto save to be the no button.
                 this.autoSave = no;
                 break;
         }
 
+        // Add the buttons onto the JPanel.
         add(yes);
         add(no);
         /* End Of Auto Save Option */
@@ -185,14 +210,23 @@ public class Options extends JPanel implements ActionListener {
         add(exit);
     }
 
+    /**
+     * Method to paint all the background for the options Panel.
+     * @param g
+     */
     @Override
     protected void paintComponent(Graphics g) {
         // Paint the picture & options.
         try{
+            // Get the border picture from the files.
             BufferedImage text = ImageIO.read(new File("border.png"));
+            // Set the font of the text
             g.setFont(new Font("Monospaced", Font.BOLD, 25));
+            // Set the colour
             g.setColor(Color.black);
+            // Draw the background for the text
             g.drawImage(text, -10, 0, 600, 80, null);
+            // Draw the text to the screen.
             g.drawString("Options", 28, 47);
 
             // Draw the actual options box
@@ -208,17 +242,19 @@ public class Options extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        // Make sure that the source is a button.
         if(e.getSource() instanceof JButton){
             JButton button = (JButton) e.getSource();
 
+            // If the user wants to exit...
             if(button.getText().equalsIgnoreCase("Exit")){
-                // Exit options.
+                // Return to the map panel.
                 game.setContent(game.getMapPanel());
                 game.requestFocus();
                 return;
             }
 
+            // If the user clicks any of the already selected options, just return.
             if(button.getText().equalsIgnoreCase(getTextSpeed())){
                 return;
             }
@@ -230,27 +266,33 @@ public class Options extends JPanel implements ActionListener {
             if(button.getText().equalsIgnoreCase(getHitboxes())){
                 return;
             }
+            // -------------------------------------------------------------------
 
-            // Player selected a new option
+            // If the player selected a text speed...
             if(button.getText().equalsIgnoreCase("slow")
                     || button.getText().equalsIgnoreCase("medium")
                     || button.getText().equalsIgnoreCase("fast")){
+                // Add the border to the newly selected button, and store the new selected text speed.
                 this.textSpeed.setBorderPainted(false);
                 this.textSpeed = button;
                 this.textSpeed.setBorderPainted(true);
                 this.textSpeed.setBorder(selected);
             }
 
+            // If the player selected an auto save option...
             if(button.getText().equalsIgnoreCase("yes")
                     || button.getText().equalsIgnoreCase("no")){
+                // Indicate the newly chosen option with a red border and save the new auto save option.
                 this.autoSave.setBorderPainted(false);
                 this.autoSave = button;
                 this.autoSave.setBorderPainted(true);
                 this.autoSave.setBorder(selected);
             }
 
+            // If the user wants to change hit boxes
             if(button.getText().equalsIgnoreCase("on")
                     || button.getText().equalsIgnoreCase("off")){
+                // Indicate the newly chosen option with a red border, and store the option.
                 this.hitboxes.setBorderPainted(false);
                 this.hitboxes = button;
                 this.hitboxes.setBorderPainted(true);
@@ -261,14 +303,26 @@ public class Options extends JPanel implements ActionListener {
 
     }
 
+    /**
+     * Method to get the text speed option.
+     * @return the string version of the option.
+     */
     public String getTextSpeed() {
         return textSpeed.getText();
     }
 
+    /**
+     * Method to get the auto save option.
+     * @return the saved string "yes" or "no".
+     */
     public String getAutoSave(){
         return autoSave.getText();
     }
 
+    /**
+     * Method to get the hit boxes option
+     * @return the saved string "on" or "off".
+     */
     public String getHitboxes(){
         return hitboxes.getText();
     }

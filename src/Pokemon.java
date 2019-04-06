@@ -17,8 +17,8 @@ public class Pokemon {
         this.level = level;
         this.exp = exp;
         // Calculate the current stats based on level.
-        this.health = initialHealth + 2 * level;
         this.maxHealth = initialHealth + 2 * level;
+        this.health = initialHealth + 2 * level;
         this.speed = initialSpeed + 1 * level;
         this.attack = initialAttack + 2 * level;
         this.type = type;
@@ -78,6 +78,7 @@ public class Pokemon {
         }
         // Boost all the stats.
         this.health += 2;
+        this.maxHealth += 2;
         this.attack += 2;
         this.speed += 1;
         // Increase the level

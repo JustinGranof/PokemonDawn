@@ -15,6 +15,7 @@ public class DialogBox extends JPanel {
     private DialogBox box;
     private Game game;
     private int speed;
+    private boolean running;
     private static BufferedImage border = null;
 
     /**
@@ -44,6 +45,8 @@ public class DialogBox extends JPanel {
         this.text.setForeground(Color.black);
         // Save the speed
         this.speed = speed;
+        // Set the thread to not be running.
+        this.running = false;
         // If the static variable has not been defined yet...
         if (border == null) {
             try {
@@ -75,12 +78,14 @@ public class DialogBox extends JPanel {
             // Add the dialog box to the panel
             this.panel.add(this, BorderLayout.SOUTH);
         }
+        // Set running to true for the thread
+        this.running = true;
         // Create a new thread to manage the type-writer
         Thread typewriter = new Thread() {
             @Override
             public void run() {
                 // Loop until the thread is interrupted/stopped.
-                while (!(this.isInterrupted())) {
+                while (running) {
                     // Loop through each line of text. (Separated by a '#')
                     for (String line : getDialog().split("#")) {
                         // SPECIAL CASE: This is used in the intro to print the name of the player.
@@ -138,7 +143,7 @@ public class DialogBox extends JPanel {
                     // Call the onComplete() method now that the dialog is over.
                     onComplete();
                     // Interrupt the thread to avoid memory loss & infinite looping.
-                    this.interrupt();
+                    running = false;
                 }
             }
         };

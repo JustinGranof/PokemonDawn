@@ -1,3 +1,11 @@
+/**
+ * Game.java
+ * Justin Granofsky & Bill Wu
+ * 6/13/2018
+ * Game object class
+ */
+
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
@@ -38,6 +46,7 @@ public class Game extends JFrame {
     private boolean dialogRunning;
     // A variable to store clip
     public static Clip gameMusic = null;
+    
 
     /**
      * Method to set the content that the player is viewing on the JFrame.
@@ -63,7 +72,7 @@ public class Game extends JFrame {
         // Set dialog to not be running yet
         this.dialogRunning = false;
         // Create player
-        this.player = new Player(this, 400, 400, "forward", 28, 40);
+        this.player = new Player(this, 500, 580, "forward", 28, 40);
         // Load the players party
         this.player.loadParty();
         // Load all the players money if there is.
@@ -107,7 +116,7 @@ public class Game extends JFrame {
         // Set the game to not be paused.
         this.paused = false;
         // Set the title of the game.
-        setTitle("Pokémon Dawn");
+        setTitle("Pokemon Dawn");
         // Set the panel to be visible
         setVisible(true);
         // Set the size of the frame.
@@ -137,26 +146,31 @@ public class Game extends JFrame {
         // Add the key listener for movement and dialog to the frame.
         addKeyListener(kl);
         Sounds.START.play(true, false);
+        // Set the background of the frame
+        this.setBackground(Color.black);
     }
 
     /**
      * Method to be run from the game loop. (Rendering, player movement, etc.)
      */
     public void tick() {
-        // If the map is not null, and has been set..
-        if (mp.getMap() != null) {
-            // Check to see if the player is in dialog.
-            if (!player.isInDialog()) {
-                // Render the maps picture
-                mp.getMap().render();
-                // if the game is not paused...
-                if (!isPaused()) {
-                    // Loop through all the npcs on the map
-                    for (int i = 0; i < mp.getMap().getPeople().size(); i++) {
-                        // Get the npc at the certain index.
-                        NPC npc = mp.getMap().getPeople().get(i);
-                        // Tick for the NPC.
-                        npc.tick();
+        // Check if a battle is currently running
+        if(!(getContentPane() instanceof Battle)) {
+            // If the map is not null, and has been set..
+            if (mp.getMap() != null) {
+                // Check to see if the player is in dialog.
+                if (!player.isInDialog()) {
+                    // Render the maps picture
+                    mp.getMap().render();
+                    // if the game is not paused...
+                    if (!isPaused()) {
+                        // Loop through all the npcs on the map
+                        for (int i = 0; i < mp.getMap().getPeople().size(); i++) {
+                            // Get the npc at the certain index.
+                            NPC npc = mp.getMap().getPeople().get(i);
+                            // Tick for the NPC.
+                            npc.tick();
+                        }
                     }
                 }
             }
@@ -332,11 +346,24 @@ public class Game extends JFrame {
         // Create the dialog for the pokemart seller.
         String talk = "Hi there!#How may I help you?#";
         // Add the counter as an npc so player can interact "over the counter".
-        pokemart.addNPC(new NPC(this, 170, 183, 30, 20, talk, "Owner",
-                new File("NPCs" + File.separator + "nothing.png")));
+        pokemart.addNPC(new NPC(this, 170, 183, 30, 20, talk, "Owner", new File("NPCs" + File.separator + "nothing.png")));
         // Add the actual NPC sprite.
-        pokemart.addNPC(new NPC(this, 140, 163, 30, 40, "", "", new File("NPCs"
-                + File.separator + "owner.png")));
+        pokemart.addNPC(new NPC(this, 140, 163, 30, 40, "", "", new File("NPCs"+ File.separator + "owner.png")));
+        
+        String msg = "Your father was the champion#of Oakville.#The pokemon you have was your father's#favorite.#Go and make him proud!#";
+        lab.addNPC(new NPC(this, 100, 100, 30, 40, msg, "Professor", new File("NPCs"+ File.separator + "oak.png")));
+        
+        String msg2 = "Hello!#Have you seen any legendary pokemon?#I heard they hide in the grass!";
+        spawn.addNPC(new NPC(this, 1003, 300, 25, 40, msg2, "Little Joe", new File("NPCs"+ File.separator + "kid.png")));
+        
+        String msg3 = "Oh you're home honey!#You should get some rest.#Have you seen your father by the way?#I'm worried#he hasn't been home in a few months.";
+        home.addNPC(new NPC(this, 200, 185, 27, 40, msg3, "Mom", new File("NPCs"+ File.separator + "mom.png")));
+        
+        String msg4 = "Your dad is the greatest trainer alive!#I've seen him win pokemon battles#with a single attack!";
+        house.addNPC(new NPC(this, 250, 150, 25, 40, msg4, "Old Man", new File("NPCs"+ File.separator + "oldman.png")));
+        
+        String msg5 = "Something very dangerous#lives under us!#No one has gone down the ladder in ages!";
+        cave1.addNPC(new NPC(this, 400, 200, 30, 40, msg5, "Explorer", new File("NPCs"+ File.separator + "man.png")));
 
         /* DRAW ALL THE WALLS FOR THE SPAWN/FIRST MAP */
         spawn.addWall(new Entity(this, 20, 0, 40, spawn.getHeight()));
@@ -406,28 +433,30 @@ public class Game extends JFrame {
         /* END OF WARPS FOR SPAWN MAP */
         /* DRAW ALL THE WILD AREAS FOR THE SPAWN MAP */
         spawn.addWildArea(new WildArea(this, 345, 315, 125, 85, 1, 8,
-                "lairon,numel,gulpin,swablu,seviper,aggron"));
+                "poochyena,silcoon,surskit,taillow"));
         spawn.addWildArea(new WildArea(this, 345, 315, 5, 5, 60, 70,
                 "latios,latias,regice,registeel,rayquaza"));
-        spawn.addWildArea(new WildArea(this, 1030, 330, 125, 420, 1, 20,
+        spawn.addWildArea(new WildArea(this, 1030, 330, 125, 420, 1, 15,
                 "mudkip,torchic,treecko,pikachu"));
-        spawn.addWildArea(new WildArea(this, 1010, 500, 20, 5, 70, 75,
+        spawn.addWildArea(new WildArea(this, 1010, 500, 10, 5, 70, 75,
                 "groudon,mew,deoxys,jirachi,ho-oh,lugia"));
         spawn.addWildArea(new WildArea(this, 980, 510, 25, 200, 1, 10,
                 "pichu,makuhita,ralts,kirlia"));
         spawn.addWildArea(new WildArea(this, 620, 930, 110, 170, 10, 20,
                 "meditite,larvitar,electrike"));
-        spawn.addWildArea(new WildArea(this, 560, 960, 180, 150, 10, 20,
-                "poochyena,silcoon,surskit,taillow"));
+        spawn.addWildArea(new WildArea(this, 560, 960, 180, 150, 20, 30,
+                "lairon,numel,gulpin,swablu,seviper,aggron"));
         spawn.addWildArea(new WildArea(this, 550, 1020, 240, 80, 40, 60,
                 "blaziken,gardevoir,ninetales,salamence"));
-        spawn.addWildArea(new WildArea(this, 540, 120, 5, 113, 30, 40,
+        spawn.addWildArea(new WildArea(this, 540, 150, 5, 83, 30, 40,
                 "wailmer,wailord,feebas,sharpedo,starmie,dratini,milotic"));
-        spawn.addWildArea(new WildArea(this, 540, 120, 1, 113, 70, 75, "kyogre"));
-        cave1.addWildArea(new WildArea(this, 0, 0, 640, 640, 20, 40,
+        spawn.addWildArea(new WildArea(this, 540, 120, 3, 3, 70, 75, "kyogre"));
+        cave1.addWildArea(new WildArea(this, 0, 0, 640, 640, 20, 30,
                 "geodude,graveler,golem,mawile,sableye,duskull,banette"));
         cave2.addWildArea(new WildArea(this, 0, 0, 819, 640, 30, 50,
                 "geodude,graveler,golem,mawile,sableye,duskull,banette"));
+        cave2.addWildArea(new WildArea(this, 0, 0, 819, 640, 100, 100,
+                "mewtwo"));
         /* END OF WILD AREAS FOR SPAWN MAP */
 
         // Cave 1 Parts
@@ -626,9 +655,8 @@ public class Game extends JFrame {
                 "forward"));
         lab.addWarp(new Warp(this, 290, 525, 45, 25, spawn, 205, 233, "forward"));
         lab.addWarp(new Warp(this, 290, 205, 35, 60, end, 270, 410, "back"));
-        house.addWarp(new Warp(this, 100, 320, 50, 30, spawn, 125, 1005,
-                "forward"));
-        end.addWarp(new Warp(this, 255, 430, 40, 20, home, 200, 200, "forward"));
+        house.addWarp(new Warp(this, 100, 320, 50, 30, spawn, 125, 1005,"forward"));
+        end.addWarp(new Warp(this, 255, 430, 40, 20, home, 200, 220, "forward"));
 
         // Add all the maps into the double linked list holding all the maps.
         this.maps.add(spawn);
