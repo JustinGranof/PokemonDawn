@@ -1,9 +1,14 @@
 # Pokemon Dawn
 
-Grade 12 Final Project.
+Grade 12 Computer Science Final Project
 
 Pokemon Dawn is a remake of the popular Pokemon game series. In Pokemon Dawn players join the world of Pokemon, and can interact
 with numerous NPCs, explore the different maps, purchase in game items, and train Pokemon through battling.
+
+<h2>Basic Gameplay</h2>
+Arrow keys allow you to move around the map
+Sometimes you will need a mouse to click buttons such as when you go into the PokeShop
+Click O for options and spacebar to talk to NPCs
 
 <h2><b>Game Images</b></h2>
 
