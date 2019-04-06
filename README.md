@@ -14,7 +14,7 @@ with numerous NPCs, explore the different maps, purchase in game items, and trai
 </ol>
 
 <h2>Basic Gameplay</h2>
-<p>Arrow keys allow you to move around the map
+<p>Arrow keys allow you to move around the map.
 Sometimes you will need a mouse to click buttons such as when you go into the PokeShop. Click O for options, spacebar to talk to NPCs, and enter to choose an option when battling other Pokemon.</p>
 <p>If all of your Pokemon faint then you respawn back in your house, so make sure to visit the PokeCentre often to heal up.</p>
 <p>There are many hidden rooms, legendary pokemon, and surprises in the game so take your time, have fun, and explore the map!</p>
