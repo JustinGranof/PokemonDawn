@@ -23,7 +23,7 @@ Sometimes you will need a mouse to click buttons such as when you go into the Po
 
 <h3>Town Of Oakville</h3>
 <img src="https://i.imgur.com/YPs7e1C.png?1"/>
-<p>When you enter the game you spawn in the middle of the map.</p>
+<p>When you enter the game you spawn in the middle of the map with a pokemon and $500</p>
 <h4>Landmarks</h4>
 <ul>
 <li>Professor's Lab (top left)</li>
@@ -40,7 +40,7 @@ Sometimes you will need a mouse to click buttons such as when you go into the Po
 <ul>
 <li>If you choose to attack your pokemon will attack with a default move</li>
 <li>Choosing catch will allow you to choose a Pokeball to throw</li>
-<li>Choosing run will give you a chance to run away but beware sometimes you won't be able to escape</li>
+<li>Choosing run will give you a chance to run away but beware, sometimes you won't be able to escape</li>
 </ul>
 <h3>Healing Pokemon</h3>
 <img src="https://i.imgur.com/BMNaspV.png?1"/>
