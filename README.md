@@ -6,7 +6,7 @@ Pokemon Dawn is a remake of the popular Pokemon game series. In Pokemon Dawn pla
 with numerous NPCs, explore the different maps, purchase in game items, and train Pokemon through battling.
 
 <h2>Instructions to Run PokemonDawn</h2>
-<p>We have provided a jar file so that users can easily run the game.</p>
+<p>Download the executable jar file from <a src="http://www.mediafire.com/file/ro8ea0xs878jseo/PokemonDawn.jar/file">here</a>.</p>
 <ol>
 <li>Clone the repository</li>
 <li>Navigate into the PokemonDawn folder</li>
