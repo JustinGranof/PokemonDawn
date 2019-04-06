@@ -1,15 +1,15 @@
-# Pokemon Dawn
+# Pokémon Dawn
 
 Grade 12 Computer Science Final Project
 
-Pokemon Dawn is a remake of the popular Pokemon game series. In Pokemon Dawn players join the world of Pokemon, and can interact
-with numerous NPCs, explore the different maps, purchase in game items, and train Pokemon through battling.
+Pokémon Dawn is a remake of the popular Pokémon game series. In Pokémon Dawn players join the world of Pokémon, and can interact
+with numerous NPCs, explore the different maps, purchase in game items, and train Pokémon through battling.
 
-<h2>Instructions to Run PokemonDawn</h2>
+<h2>Instructions to Run Pokémon Dawn</h2>
 <p>Download the executable jar file from <a href="http://www.mediafire.com/file/ro8ea0xs878jseo/PokemonDawn.jar/file">here</a>.</p>
 <ol>
 <li>Clone the repository</li>
-<li>Navigate into the PokemonDawn folder</li>
+<li>Navigate into the Pokémon Dawn folder</li>
 <li>In the terminal or command line run java -jar PokemonDawn.jar</li>
 </ol>
 
