@@ -8,9 +8,9 @@ with numerous NPCs, explore the different maps, purchase in game items, and trai
 <h2>Instructions to Run Pokémon Dawn</h2>
 <p>Due to GitHub size limitations we were unable to place the jar file in the repository so we hosted it on another website where you can download and run PokemonDawn</p>
 <p>Download the executable jar file <a href="http://www.mediafire.com/file/ro8ea0xs878jseo/PokemonDawn.jar/file">here</a>.</p>
-<ol>
   
 <p>If you feel uncomfortable downloading from the website, you can compile and run the program yourself:</p>
+<ol>
 <li>Clone the repository</li>
 <li>Navigate into the Pokémon Dawn folder</li>
 <li>Open the folder in a Java IDE such as Eclipse or Intellij IDEA</li>
