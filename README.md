@@ -1,4 +1,4 @@
-# PokemonDawn
+# Pokemon Dawn
 
 Grade 12 Final Project.
 
