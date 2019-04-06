@@ -45,7 +45,7 @@ public class Battle extends JPanel implements KeyListener {
 		// Draw the background image
 		try {
 			if (background == null) {
-				background = ImageIO.read(new File("grass-battle.png"));
+				background = ImageIO.read(PokemonDawn.getResource("grass-battle.png"));
 			}
 			g.drawImage(background, 0, 0, 600, 401, null);
 		} catch (IOException e) {
@@ -77,7 +77,7 @@ public class Battle extends JPanel implements KeyListener {
 		} else {
 			try {
 				BufferedImage img = ImageIO
-						.read(new File("pokeball-battle.png"));
+						.read(PokemonDawn.getResource("pokeball-battle.png"));
 				g.drawImage(img, 410, 115, 64, 64, null);
 			} catch (IOException e) {
 			}

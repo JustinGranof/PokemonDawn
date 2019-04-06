@@ -1,0 +1,7 @@
+Location:Oakville~852~374
+Party0:Rayquaza~6~5~30
+TextSpeed:Fast
+AutoSave:Yes
+Hitboxes:On
+Money:0
+Pokeball:0

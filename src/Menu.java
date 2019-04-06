@@ -59,7 +59,7 @@ public class Menu extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         try {
-            BufferedImage img = ImageIO.read(new File("logo.png"));//load image
+            BufferedImage img = ImageIO.read(PokemonDawn.getResource("logo.png"));//load image
             g.drawImage(img, 0, 0, 600, 600, null);//paint image
         }catch(IOException e){}
     }

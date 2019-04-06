@@ -219,7 +219,7 @@ public class Options extends JPanel implements ActionListener {
         // Paint the picture & options.
         try{
             // Get the border picture from the files.
-            BufferedImage text = ImageIO.read(new File("border.png"));
+            BufferedImage text = ImageIO.read(PokemonDawn.getResource("border.png"));
             // Set the font of the text
             g.setFont(new Font("Monospaced", Font.BOLD, 25));
             // Set the colour

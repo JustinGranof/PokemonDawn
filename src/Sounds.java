@@ -2,6 +2,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.io.File;
+import java.net.URL;
 
 public enum Sounds {
 
@@ -24,9 +25,9 @@ public enum Sounds {
      */
     Sounds(String path) {
         // Create a new file using the filename parameter.
-        File sound = new File("music" + File.separator + path);
+        URL sound = PokemonDawn.getResource("music" + "/" + path);
         // Make sure the file exists.
-        if (!sound.exists()) {
+        if (sound == null) {
             System.out.println("[ERROR] " + path + " not found!");
             return;
         }

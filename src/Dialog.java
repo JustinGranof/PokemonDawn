@@ -99,11 +99,11 @@ public class Dialog extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         try {
-            BufferedImage img = ImageIO.read(new File("Intro.png"));//to access the picture to draw
+            BufferedImage img = ImageIO.read(PokemonDawn.getResource("Intro.png"));//to access the picture to draw
             g.drawImage(img, 0, 0, 800, 600, null);//draw at location
             
             if(pokemon){
-                BufferedImage pke = ImageIO.read(new File("mew.png"));//draw pokemon when allowed to
+                BufferedImage pke = ImageIO.read(PokemonDawn.getResource("mew.png"));//draw pokemon when allowed to
                 g.drawImage(pke, 150, 100, 160, 160, null);
             }
         }catch(IOException e){}

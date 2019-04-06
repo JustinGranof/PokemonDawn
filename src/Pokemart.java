@@ -207,12 +207,12 @@ public class Pokemart extends JPanel implements ActionListener, KeyListener{
         // Paint the picture
         try{
             //load images
-            BufferedImage border = ImageIO.read(new File("border.png"));
-            BufferedImage pic = ImageIO.read(new File("maps" + File.separator + "pokemart.png"));
-            BufferedImage guy = ImageIO.read(new File("NPCs" + File.separator + "owner.png"));
-            BufferedImage player = ImageIO.read(new File("player" + File.separator + "left.png"));
-            BufferedImage mart = ImageIO.read(new File("mart.png"));
-            BufferedImage ball = ImageIO.read(new File("pokeball.png"));
+            BufferedImage border = ImageIO.read(PokemonDawn.getResource("border.png"));
+            BufferedImage pic = ImageIO.read(PokemonDawn.getResource("maps" + "/" + "pokemart.png"));
+            BufferedImage guy = ImageIO.read(PokemonDawn.getResource("NPCs" + "/" + "owner.png"));
+            BufferedImage player = ImageIO.read(PokemonDawn.getResource("player" + "/" + "left.png"));
+            BufferedImage mart = ImageIO.read(PokemonDawn.getResource("mart.png"));
+            BufferedImage ball = ImageIO.read(PokemonDawn.getResource("pokeball.png"));
             //draw rectangles
             g.fillRect(0, 0, 800, 800);
             g.setColor(Color.BLACK);

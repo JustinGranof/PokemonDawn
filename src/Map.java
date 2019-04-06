@@ -11,6 +11,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import javax.imageio.ImageIO;
 
@@ -36,7 +37,7 @@ public class Map extends Canvas {
     private DoubleLinkedList<WildArea> wildAreas;
     
     //constructor
-    public Map(Game game, int mapWidth, int mapHeight, int picWidth, int picHeight, String name, File image) {
+    public Map(Game game, int mapWidth, int mapHeight, int picWidth, int picHeight, String name, URL image) {
         //initialize items
         this.setFocusable(false);
         addKeyListener(game.getKeyListener());

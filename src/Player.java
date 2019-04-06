@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.Timer;
+import javax.swing.*;
 
 public class Player extends Entity {
 
@@ -59,7 +59,6 @@ public class Player extends Entity {
         this.money = 500;
         // Display the player sprite with proper direction.
         setImage(image);
-
         // Timer to control animating the players movement.
         animator = new Timer(150, new ActionListener() {
             @Override
@@ -81,6 +80,7 @@ public class Player extends Entity {
         });
         // Start the timer/loop to animate the players movement.
         animator.start();
+
     }
 
     /**
@@ -295,7 +295,7 @@ public class Player extends Entity {
         this.image = image;
         try {
             // Get the image from the files
-            sprite = ImageIO.read(new File("player" + File.separator + image
+            sprite = ImageIO.read(PokemonDawn.getResource("player/" + image
                     + ".png"));
         } catch (IOException e) {
         }

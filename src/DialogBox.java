@@ -3,7 +3,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 public class DialogBox extends JPanel {
@@ -51,7 +50,7 @@ public class DialogBox extends JPanel {
         if (border == null) {
             try {
                 // Load in the image from the files for the border/dialog box.
-                border = ImageIO.read(new File("border.png"));
+                border = ImageIO.read(PokemonDawn.getResource("border.png"));
             } catch (IOException e) {
             }
         }

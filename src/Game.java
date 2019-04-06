@@ -12,8 +12,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.sound.sampled.*;
 
 
@@ -63,6 +62,32 @@ public class Game extends JFrame {
      * Constructor for the game. Initializes variables & more.
      */
     public Game() {
+        // Set the title of the game.
+        setTitle("Pokemon Dawn");
+        // Set the panel to be visible
+        setVisible(true);
+        // Set the size of the frame.
+        setSize(600, 600);
+        // Disable resizing of the frame
+        setResizable(false);
+        // Make the program shutdown on closing.
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        // Add a listener to handle auto saving the game.
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Check if user has auto saving enabled.
+                if (getOptions().getAutoSave().equalsIgnoreCase("Yes")) {
+                    // Auto save the game.
+                    saveGame(false);
+                }
+                System.exit(0);
+            }
+        });
+        // Make the frame open in the center of the screen.
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height
+                / 2 - this.getSize().height / 2);
         // Set the current panel to the main menu.
         setContent(new Menu());
         // Set the game to have not started, player is at main menu.
@@ -115,39 +140,13 @@ public class Game extends JFrame {
         loadMaps();
         // Set the game to not be paused.
         this.paused = false;
-        // Set the title of the game.
-        setTitle("Pokemon Dawn");
-        // Set the panel to be visible
-        setVisible(true);
-        // Set the size of the frame.
-        setSize(600, 600);
-        // Disable resizing of the frame
-        setResizable(false);
-        // Make the program shutdown on closing.
-        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        // Add a listener to handle auto saving the game.
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                // Check if user has auto saving enabled.
-                if (getOptions().getAutoSave().equalsIgnoreCase("Yes")) {
-                    // Auto save the game.
-                    saveGame(false);
-                }
-                System.exit(0);
-            }
-        });
-        // Make the frame open in the center of the screen.
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height
-                / 2 - this.getSize().height / 2);
+        Sounds.START.play(true, false);
+        // Set the background of the frame
+        this.setBackground(Color.black);
         // Save the instance of the key listener that will be used in the game.
         this.kl = new KeyPressed(this);
         // Add the key listener for movement and dialog to the frame.
         addKeyListener(kl);
-        Sounds.START.play(true, false);
-        // Set the background of the frame
-        this.setBackground(Color.black);
     }
 
     /**
@@ -302,68 +301,68 @@ public class Game extends JFrame {
      */
     public void loadMaps() {
         // Create the spawn map.
-        Map spawn = new Map(this, 1200, 1200, 1200, 1200, "Oakville", new File(
-                "maps" + File.separator + "oakville.png"));
+        Map spawn = new Map(this, 1200, 1200, 1200, 1200, "Oakville", PokemonDawn.getResource(
+                "maps" + "/" + "oakville.png"));
 
         // Create the pokecenter map.
         Map pokecenter = new Map(this, 1067, 600, 513, 280, "Pokecenter",
-                new File("maps" + File.separator + "pokecenter.png"));
+                PokemonDawn.getResource("maps" + "/" + "pokecenter.png"));
         // Create the pokemart map.
-        Map pokemart = new Map(this, 933, 600, 683, 450, "Pokemart", new File(
-                "maps" + File.separator + "pokemart.png"));
+        Map pokemart = new Map(this, 933, 600, 683, 450, "Pokemart", PokemonDawn.getResource(
+                "maps" + "/" + "pokemart.png"));
         // Create the first level cave map
-        Map cave1 = new Map(this, 640, 640, 640, 640, "Cave 1", new File("maps"
-                + File.separator + "cave1.png"));
+        Map cave1 = new Map(this, 640, 640, 640, 640, "Cave 1", PokemonDawn.getResource("maps"
+                + "/" + "cave1.png"));
         // Create the second level cave map.
-        Map cave2 = new Map(this, 819, 640, 819, 640, "Cave 2", new File("maps"
-                + File.separator + "cave2.png"));
+        Map cave2 = new Map(this, 819, 640, 819, 640, "Cave 2", PokemonDawn.getResource("maps"
+                + "/" + "cave2.png"));
         // Create map of the player's home
-        Map home = new Map(this, 700, 600, 450, 400, "Home", new File("maps"
-                + File.separator + "house1.png"));
+        Map home = new Map(this, 700, 600, 450, 400, "Home", PokemonDawn.getResource("maps"
+                + "/" + "house1.png"));
         // Create the map for the hallway inside the player's home
-        Map hallway = new Map(this, 700, 600, 510, 240, "Hallway", new File(
-                "maps" + File.separator + "hallway.png"));
+        Map hallway = new Map(this, 700, 600, 510, 240, "Hallway", PokemonDawn.getResource(
+                "maps" + "/" + "hallway.png"));
         // Create the map for the room inside the player's home
-        Map room = new Map(this, 700, 600, 300, 225, "Room", new File("maps"
-                + File.separator + "room.png"));
+        Map room = new Map(this, 700, 600, 300, 225, "Room", PokemonDawn.getResource("maps"
+                + "/" + "room.png"));
         // Create the lab map
-        Map lab = new Map(this, 800, 800, 490, 566, "Lab", new File("maps"
-                + File.separator + "lab.png"));
+        Map lab = new Map(this, 800, 800, 490, 566, "Lab", PokemonDawn.getResource("maps"
+                + "/" + "lab.png"));
         // Create the map for the house in the bottom left of the map.
-        Map house = new Map(this, 600, 600, 430, 350, "House", new File("maps"
-                + File.separator + "house2.png"));
+        Map house = new Map(this, 600, 600, 430, 350, "House", PokemonDawn.getResource("maps"
+                + "/" + "house2.png"));
         // Create the map of the secret room.
-        Map end = new Map(this, 600, 600, 550, 450, "End", new File("maps"
-                + File.separator + "end.png"));
+        Map end = new Map(this, 600, 600, 550, 450, "End", PokemonDawn.getResource("maps"
+                + "/" + "end.png"));
         // Create the dialog for the nurse that heals the player's pokemon.
         String dialog = "Welcome to our Pokemon Center!#Please wait while I restore you Pokemon.#Thank you for waiting.#We've restored your Pokemon to full health.#We hope to see you soon!";
         // Add the nurse npc to the counter so the player can talk to her over the counter.
         pokecenter.addNPC(new NPC(this, 245, 45, 50, 80, dialog, "Nurse",
-                new File("NPCs" + File.separator + "nothing.png")));
+                PokemonDawn.getResource("NPCs" + "/" + "nothing.png")));
         // Add the nurse with the proper sprite so she is displayed behind the counter.
-        pokecenter.addNPC(new NPC(this, 242, 45, 30, 40, "", "", new File(
-                "NPCs" + File.separator + "healer.png")));
+        pokecenter.addNPC(new NPC(this, 242, 45, 30, 40, "", "", PokemonDawn.getResource(
+                "NPCs" + "/" + "healer.png")));
         // Create the dialog for the pokemart seller.
         String talk = "Hi there!#How may I help you?#";
         // Add the counter as an npc so player can interact "over the counter".
-        pokemart.addNPC(new NPC(this, 170, 183, 30, 20, talk, "Owner", new File("NPCs" + File.separator + "nothing.png")));
+        pokemart.addNPC(new NPC(this, 170, 183, 30, 20, talk, "Owner", PokemonDawn.getResource("NPCs" + "/" + "nothing.png")));
         // Add the actual NPC sprite.
-        pokemart.addNPC(new NPC(this, 140, 163, 30, 40, "", "", new File("NPCs"+ File.separator + "owner.png")));
+        pokemart.addNPC(new NPC(this, 140, 163, 30, 40, "", "", PokemonDawn.getResource("NPCs"+ "/" + "owner.png")));
         
         String msg = "Your father was the champion#of Oakville.#The pokemon you have was your father's#favorite.#Go and make him proud!#";
-        lab.addNPC(new NPC(this, 100, 100, 30, 40, msg, "Professor", new File("NPCs"+ File.separator + "oak.png")));
+        lab.addNPC(new NPC(this, 100, 100, 30, 40, msg, "Professor", PokemonDawn.getResource("NPCs"+ "/" + "oak.png")));
         
         String msg2 = "Hello!#Have you seen any legendary pokemon?#I heard they hide in the grass!";
-        spawn.addNPC(new NPC(this, 1003, 300, 25, 40, msg2, "Little Joe", new File("NPCs"+ File.separator + "kid.png")));
+        spawn.addNPC(new NPC(this, 1003, 300, 25, 40, msg2, "Little Joe", PokemonDawn.getResource("NPCs"+ "/" + "kid.png")));
         
         String msg3 = "Oh you're home honey!#You should get some rest.#Have you seen your father by the way?#I'm worried#he hasn't been home in a few months.";
-        home.addNPC(new NPC(this, 200, 185, 27, 40, msg3, "Mom", new File("NPCs"+ File.separator + "mom.png")));
+        home.addNPC(new NPC(this, 200, 185, 27, 40, msg3, "Mom", PokemonDawn.getResource("NPCs"+ "/" + "mom.png")));
         
         String msg4 = "Your dad is the greatest trainer alive!#I've seen him win pokemon battles#with a single attack!";
-        house.addNPC(new NPC(this, 250, 150, 25, 40, msg4, "Old Man", new File("NPCs"+ File.separator + "oldman.png")));
+        house.addNPC(new NPC(this, 250, 150, 25, 40, msg4, "Old Man", PokemonDawn.getResource("NPCs"+ "/" + "oldman.png")));
         
         String msg5 = "Something very dangerous#lives under us!#No one has gone down the ladder in ages!";
-        cave1.addNPC(new NPC(this, 400, 200, 30, 40, msg5, "Explorer", new File("NPCs"+ File.separator + "man.png")));
+        cave1.addNPC(new NPC(this, 400, 200, 30, 40, msg5, "Explorer", PokemonDawn.getResource("NPCs"+ "/" + "man.png")));
 
         /* DRAW ALL THE WALLS FOR THE SPAWN/FIRST MAP */
         spawn.addWall(new Entity(this, 20, 0, 40, spawn.getHeight()));
@@ -551,8 +550,8 @@ public class Game extends JFrame {
         lab.addWall(new Entity(this, 70, 505, 55, 30));
 
         // Add the professor.
-        lab.addNPC(new NPC(this, 450, 50, 54, 46, "Ok", "Pine", new File("NPCs"
-                + File.separator + "professor.png")));
+        lab.addNPC(new NPC(this, 450, 50, 54, 46, "Ok", "Pine", PokemonDawn.getResource("NPCs"
+                + "/" + "oak.png")));
         // ------------
 
         // pokecenter parts

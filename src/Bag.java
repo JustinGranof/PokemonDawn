@@ -185,12 +185,12 @@ public class Bag extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {
         // Paint the picture
         try {
-            BufferedImage border = ImageIO.read(new File("border.png"));//load in from the picture files
-            BufferedImage bag = ImageIO.read(new File("bag.png"));
-            BufferedImage one = ImageIO.read(new File("pokeball.png"));
-            BufferedImage two = ImageIO.read(new File("greatball.png"));
-            BufferedImage three = ImageIO.read(new File("ultraball.png"));
-            BufferedImage four = ImageIO.read(new File("masterball.png"));
+            BufferedImage border = ImageIO.read(PokemonDawn.getResource("border.png"));//load in from the picture files
+            BufferedImage bag = ImageIO.read(PokemonDawn.getResource("bag.png"));
+            BufferedImage one = ImageIO.read(PokemonDawn.getResource("pokeball.png"));
+            BufferedImage two = ImageIO.read(PokemonDawn.getResource("greatball.png"));
+            BufferedImage three = ImageIO.read(PokemonDawn.getResource("ultraball.png"));
+            BufferedImage four = ImageIO.read(PokemonDawn.getResource("masterball.png"));
             g.drawImage(border, 295, 0, 300, 570, null);//draw at specified locations
             g.drawImage(border, 0, 330, 295, 240, null);
             g.drawImage(bag, -10, 0, 305, 330, null);

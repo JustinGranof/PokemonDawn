@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 //NPC class
 public class NPC extends Entity {
@@ -21,7 +22,7 @@ public class NPC extends Entity {
     private BufferedImage img;
     
     //constructor
-    public NPC(Game game, int x, int y, int width, int height, String dialog, String name, File image) {
+    public NPC(Game game, int x, int y, int width, int height, String dialog, String name, URL image) {
         super(game, x, y, width, height);
         this.dialog = dialog;
         this.name = name;

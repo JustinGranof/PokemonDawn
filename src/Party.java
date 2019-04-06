@@ -144,7 +144,7 @@ public class Party extends JPanel implements ActionListener, MouseListener {
 	protected void paintComponent(Graphics g) {
 		try {
 			// Draw the background image
-			BufferedImage background = ImageIO.read(new File("party.png"));
+			BufferedImage background = ImageIO.read(PokemonDawn.getResource("party.png"));
 			g.drawImage(background, -5, 0, 600, 600, null);
 			// Set text font
 			g.setFont(new Font("Monospaced", Font.BOLD, 20));
