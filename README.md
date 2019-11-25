@@ -39,7 +39,7 @@ Sometimes you will need a mouse to click buttons such as when you go into the Po
 <li>Your house (top right)</li>
 <li>PokeCentre (mid left)</li>
 <li>PokeMart (mid left)</li>
-<li>Old man's house (bottom left</li>
+<li>Old man's house (bottom left)</li>
 <li>Cave (bottom right) </li>
 </ul>
 
